@@ -2,12 +2,14 @@
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/devopsfaith/krakend-gelf)](https://goreportcard.com/report/github.com/devopsfaith/krakend-gelf)
 
-A gelf Writer for [KrakenD](https://krakend.io) loggers.
+A gelf (Graylog Extended Log Format) Writer for [KrakenD](https://krakend.io) loggers.
 
 ## How to use it
 
 This package just return a gelf writer with the configuration provided via KrakenD ExtraConfig.
-You need to add the Writer to the logger you want to use. This example uses KrakenD-gologging.
+
+You need to add the Writer to the logger writers.
+This example uses [KrakenD-gologging](https://github.com/devopsfaith/krakend-gologging).
 
 Import the package
 
