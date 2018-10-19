@@ -44,7 +44,7 @@ func ConfigGetter(e config.ExtraConfig) interface{} {
 		return nil
 	}
 	cfg := Config{}
-	if v, ok := tmp["addr"]; ok {
+	if v, ok := tmp["address"]; ok {
 		cfg.Addr = v.(string)
 	}
 	if v, ok := tmp["enable_tcp"]; ok {

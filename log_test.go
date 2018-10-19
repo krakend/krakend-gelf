@@ -19,7 +19,7 @@ func TestUDPWriter(t *testing.T) {
 	}
 	cfg := map[string]interface{}{
 		Namespace: map[string]interface{}{
-			"addr":       r.Addr(),
+			"address":    r.Addr(),
 			"enable_tcp": false,
 		},
 	}
