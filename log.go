@@ -12,8 +12,11 @@ import (
 const Namespace = "github_com/devopsfaith/krakend-gelf"
 
 var (
-	// ErrEmptyValue is the error returned when there is no config under the namespace
+	newTCPWriter = gelf.NewTCPWriter
+	newUDPWriter = gelf.NewUDPWriter
+	// ErrWrongConfig is the error returned when there is no config under the namespace
 	ErrWrongConfig = fmt.Errorf("getting the extra config for the krakend-gelf module")
+	// ErrMissingAddr is the error returned when there address param is empty
 	ErrMissingAddr = fmt.Errorf("missing addr to send gelf logs")
 )
 
@@ -28,9 +31,9 @@ func NewWriter(cfg config.ExtraConfig) (io.Writer, error) {
 	}
 
 	if logconfig.EnableTCP {
-		return gelf.NewTCPWriter(logconfig.Addr)
+		return newTCPWriter(logconfig.Addr)
 	}
-	return gelf.NewUDPWriter(logconfig.Addr)
+	return newUDPWriter(logconfig.Addr)
 }
 
 // ConfigGetter implements the config.ConfigGetter interface

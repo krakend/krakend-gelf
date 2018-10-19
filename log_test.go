@@ -3,14 +3,45 @@ package gelf
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
+	"sync/atomic"
 	"testing"
 
 	"gopkg.in/Graylog2/go-gelf.v2/gelf"
 )
 
 const (
-	debugMsg = "Debug msg"
+	debugMsg     = "Debug msg"
+	expectedAddr = "127.0.0.1:12201"
 )
+
+func mockerTCPWriter(count *uint64) func(string) (*gelf.TCPWriter, error) {
+	return func(addr string) (*gelf.TCPWriter, error) {
+		atomic.AddUint64(count, 1)
+		if expectedAddr != addr {
+			return nil, fmt.Errorf("Unexpected address: %s, expecting: %s", addr, expectedAddr)
+		}
+		return nil, nil
+	}
+}
+
+func TestTCPWriter(t *testing.T) {
+	var count uint64
+	newTCPWriter = mockerTCPWriter(&count)
+	cfg := map[string]interface{}{
+		Namespace: map[string]interface{}{
+			"address":    "127.0.0.1:12201",
+			"enable_tcp": true,
+		},
+	}
+	_, err := NewWriter(cfg)
+	if err != nil {
+		t.Errorf("unexpected error: %s", err.Error())
+	}
+	if count != 1 {
+		t.Errorf("unexpected number of calls: %d", count)
+	}
+}
 
 func TestUDPWriter(t *testing.T) {
 	r, err := gelf.NewReader("127.0.0.1:0")
@@ -34,7 +65,7 @@ func TestUDPWriter(t *testing.T) {
 		t.Error(err)
 	}
 	buff := &bytes.Buffer{}
-	if err := msg.MarshalJSONBuf(buff); err != nil {
+	if err = msg.MarshalJSONBuf(buff); err != nil {
 		t.Error(err)
 	}
 	result := buff.Bytes()
