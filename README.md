@@ -1,6 +1,8 @@
 # KrakenD-gelf
 
-A gelf Writer for KrakenD loggers.
+[![Go Report Card](https://goreportcard.com/badge/github.com/devopsfaith/krakend-gelf)](https://goreportcard.com/report/github.com/devopsfaith/krakend-gelf)
+
+A gelf Writer for [KrakenD](https://krakend.io) loggers.
 
 ## How to use it
 
