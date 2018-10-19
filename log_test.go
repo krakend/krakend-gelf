@@ -86,32 +86,3 @@ func TestMissingAddr(t *testing.T) {
 		t.Errorf("The error should be %s, not %s", ErrMissingAddr.Error(), err.Error())
 	}
 }
-
-func logSomeStuff(message string, addr string, enableTCP bool) ([]byte, error) {
-	r, err := gelf.NewReader("127.0.0.1:0")
-	if err != nil {
-		return nil, err
-	}
-	cfg := map[string]interface{}{
-		Namespace: map[string]interface{}{
-			"addr":       r.Addr(),
-			"enable_tcp": enableTCP,
-		},
-	}
-	wr, err := NewWriter(cfg)
-	if err != nil {
-		return nil, err
-	}
-
-	wr.Write([]byte(message))
-
-	msg, err := r.ReadMessage()
-	if err != nil {
-		return nil, err
-	}
-	buff := &bytes.Buffer{}
-	if err := msg.MarshalJSONBuf(buff); err != nil {
-		return nil, err
-	}
-	return buff.Bytes(), nil
-}
