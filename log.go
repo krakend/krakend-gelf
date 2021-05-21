@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/devopsfaith/krakend/config"
+	"github.com/luraproject/lura/config"
 	"gopkg.in/Graylog2/go-gelf.v2/gelf"
 )
 
