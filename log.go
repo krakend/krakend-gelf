@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/luraproject/lura/config"
+	"github.com/luraproject/lura/v2/config"
 	"gopkg.in/Graylog2/go-gelf.v2/gelf"
 )
 
