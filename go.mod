@@ -1,4 +1,4 @@
-module github.com/devopsfaith/krakend-gelf/v2
+module github.com/krakendio/krakend-gelf/v2
 
 go 1.17
 

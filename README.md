@@ -1,6 +1,6 @@
 # KrakenD-gelf
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/devopsfaith/krakend-gelf)](https://goreportcard.com/report/github.com/devopsfaith/krakend-gelf)
+[![Go Report Card](https://goreportcard.com/badge/github.com/krakendio/krakend-gelf)](https://goreportcard.com/report/github.com/krakendio/krakend-gelf)
 
 A gelf (Graylog Extended Log Format) Writer for [KrakenD](https://krakend.io) loggers.
 
@@ -14,7 +14,7 @@ This example uses [KrakenD-gologging](https://github.com/devopsfaith/krakend-gol
 Import the package
 
 ```
-import "github.com/devopsfaith/krakend-gelf"
+import "github.com/krakendio/krakend-gelf"
 ```
 
 Create a new Writer:
