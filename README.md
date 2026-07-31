@@ -14,7 +14,7 @@ This example uses [KrakenD-gologging](https://github.com/devopsfaith/krakend-gol
 Import the package
 
 ```
-import "github.com/krakend/krakend-gelf"
+import "github.com/krakend/krakend-gelf/v3"
 ```
 
 Create a new Writer:
@@ -31,7 +31,7 @@ gologging.NewLogger(cfg.ExtraConfig, gelfWriter...)
 
 ## Configuration
 
-Add the `github_com/devopsfaith/krakend-gelf` section to the service extra config.
+Add the `telemetry/gelf` section to the service extra config.
 
 There's 2 parameters:
 
@@ -47,7 +47,7 @@ Example:
 
 ```
 "extra_config": {
-  "github_com/devopsfaith/krakend-gelf": {
+  "telemetry/gelf": {
     "address": "myGraylogInstance:12201",
     "enable_tcp": false
   }
