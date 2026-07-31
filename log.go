@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/luraproject/lura/v2/config"
+	"github.com/luraproject/lura/v3/config"
 	"gopkg.in/Graylog2/go-gelf.v2/gelf"
 )
 
 // Namespace is the key to look for extra configuration details
-const Namespace = "github_com/devopsfaith/krakend-gelf"
+const Namespace = "telemetry/gelf"
 
 var (
 	newTCPWriter = gelf.NewTCPWriter
